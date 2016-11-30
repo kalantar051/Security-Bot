@@ -212,52 +212,44 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-	"admin",
-    "onservice",
-    "inrealm",
-    "ingroup",
-    "inpm",
-    "banhammer",
-    "stats",
-    "anti_spam",
-    "owners",
-    "arabic_lock",
-    "set",
-    "get",
-    "broadcast",
-    "invite",
-    "all",
-    "leave_ban",
-	"supergroup",
-	"whitelist",
-	"msg_checks"
+    "plugins",
+    "help-pro",
+    "lang",
+    "badword",
+    "expire",
+    "forward",
+    "show",
+    "forwardall",
+    "antiporn",
+    "Home-management",
+    "infome",
+    "Spam-check",
+    "User-management",
+    "Values"
     },
-    sudo_users = {110626080,103649648,111020322,0,tonumber(our_id)},--Sudo users
+    sudo_users = {160149610},--Sudo users
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Teleseed v4
+    about_text = [[Security v4
 An advanced administration bot based on TG-CLI written in Lua
 
-https://github.com/SEEDTEAM/TeleSeed
+https://github.com/MobinDehghani/Security-Bot
 
 Admins
-@iwals [Founder]
-@imandaneshi [Developer]
-@POTUS [Developer]
-@seyedan25 [Manager]
-@aRandomStranger [Admin]
+@MobinDev [Founder]
+@CliApi [Developer]
+@Flooding [Developer]
+@Janlou [Manager]
+@Haniew_Kj [Admin]
 
 Special thanks to
-awkward_potato
-Siyanew
-topkecleon
-Vamptacus
+@Namusn
+@Haniew_Kj
+@CliApi
+@Janlou
 
 Our channels
-@teleseedch [English]
-@iranseed [persian]
-
-Our website 
-http://teleseed.seedteam.org/
+@Special_programming [English]
+@AboutBots [persian]
 ]],
     help_text_realm = [[
 Realm Commands:
