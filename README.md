@@ -5,7 +5,7 @@ sudo apt-get update; sudo apt-get upgrade -y --force-yes; sudo apt-get dist-upgr
 `````
 * **نصب روبات**
 `````sh
-git clone https://github.com/MobinDehghani/Security-Bot.git && cd Security-Bot && chmod +x launch.sh && ./launch.sh install && ./launch.sh
+cd $HOME && git clone https://github.com/MobinDehghani/Security-Bot.git && cd Security-Bot && chmod +x launch.sh && ./launch.sh install && ./launch.sh
 `````
 * **اجرای روبات**
 `````sh
