@@ -17,7 +17,7 @@ function on_msg_receive (msg)
   msg = backward_msg_format(msg)
 
   local receiver = get_receiver(msg)
-  print(receiver)
+  --print(receiver)
   --vardump(msg)
   --vardump(msg)
   msg = pre_process_service_msg(msg)
@@ -27,7 +27,7 @@ function on_msg_receive (msg)
       match_plugins(msg)
       if redis:get("bot:markread") then
         if redis:get("bot:markread") == "on" then
-          mark_read(receiver, ok_cb, false)
+          --mark_read(receiver, ok_cb, false)
         end
       end
     end
@@ -53,38 +53,38 @@ end
 function msg_valid(msg)
   -- Don't process outgoing messages
   if msg.out then
-    print('\27[36mNot valid: msg from us\27[39m')
+    --print('\27[36mNot valid: msg from us\27[39m')
     return false
   end
 
   -- Before bot was started
   if msg.date < os.time() - 5 then
-    print('\27[36mNot valid: old msg\27[39m')
-    return false
+    --print('\27[36mNot valid: old msg\27[39m')
+    return true
   end
 
   if msg.unread == 0 then
-    print('\27[36mNot valid: readed\27[39m')
+    --print('\27[36mNot valid: readed\27[39m')
     return false
   end
 
   if not msg.to.id then
-    print('\27[36mNot valid: To id not provided\27[39m')
+    --print('\27[36mNot valid: To id not provided\27[39m')
     return false
   end
 
   if not msg.from.id then
-    print('\27[36mNot valid: From id not provided\27[39m')
+    --print('\27[36mNot valid: From id not provided\27[39m')
     return false
   end
 
   if msg.from.id == our_id then
-    print('\27[36mNot valid: Msg from our id\27[39m')
+    --print('\27[36mNot valid: Msg from our id\27[39m')
     return false
   end
 
   if msg.to.type == 'encr_chat' then
-    print('\27[36mNot valid: Encrypted chat\27[39m')
+    --print('\27[36mNot valid: Encrypted chat\27[39m')
     return false
   end
 
@@ -118,7 +118,7 @@ end
 function pre_process_msg(msg)
   for name,plugin in pairs(plugins) do
     if plugin.pre_process and msg then
-      print('Preprocess', name)
+      --print('Preprocess', name)
       msg = plugin.pre_process(msg)
     end
   end
@@ -141,8 +141,8 @@ local function is_plugin_disabled_on_chat(plugin_name, receiver)
     for disabled_plugin,disabled in pairs(disabled_chats[receiver]) do
       if disabled_plugin == plugin_name and disabled then
         local warning = 'Plugin '..disabled_plugin..' is disabled on this chat'
-        print(warning)
-        send_msg(receiver, warning, ok_cb, false)
+        --print(warning)
+        --(receiver, warning, ok_cb, false)
         return true
       end
     end
@@ -157,7 +157,7 @@ function match_plugin(plugin, plugin_name, msg)
   for k, pattern in pairs(plugin.patterns) do
     local matches = match_pattern(pattern, msg.text)
     if matches then
-      print("msg matches: ", pattern)
+      --print("msg matches: ", pattern)
 
       if is_plugin_disabled_on_chat(plugin_name, receiver) then
         return nil
@@ -186,7 +186,7 @@ end
 -- Save the content of _config to config.lua
 function save_config( )
   serialize_to_file(_config, './data/config.lua')
-  print ('saved config into ./data/config.lua')
+  --print ('saved config into ./data/config.lua')
 end
 
 -- Returns the config from config.lua file.
@@ -195,14 +195,14 @@ function load_config( )
   local f = io.open('./data/config.lua', "r")
   -- If config.lua doesn't exist
   if not f then
-    print ("Created new config file: data/config.lua")
+    --print ("Created new config file: data/config.lua")
     create_config()
   else
     f:close()
   end
   local config = loadfile ("./data/config.lua")()
   for v,user in pairs(config.sudo_users) do
-    print("Sudo user: " .. user)
+    --print("Sudo user: " .. user)
   end
   return config
 end
@@ -615,7 +615,7 @@ Returns group logs
 ]],
   }
   serialize_to_file(config, './data/config.lua')
-  print('saved config into ./data/config.lua')
+  --print('saved config into ./data/config.lua')
 end
 
 function on_our_id (id)
@@ -640,7 +640,7 @@ end
 -- Enable plugins in config.json
 function load_plugins()
   for k, v in pairs(_config.enabled_plugins) do
-    print("Loading plugin", v)
+    --print("Loading plugin", v)
 
     local ok, err =  pcall(function()
       local t = loadfile("plugins/"..v..'.lua')()
@@ -648,9 +648,9 @@ function load_plugins()
     end)
 
     if not ok then
-      print('\27[31mError loading plugin '..v..'\27[39m')
-	  print(tostring(io.popen("lua plugins/"..v..".lua"):read('*all')))
-      print('\27[31m'..err..'\27[39m')
+      --print('\27[31mError loading plugin '..v..'\27[39m')
+	  --print(tostring(io.popen("lua plugins/"..v..".lua"):read('*all')))
+      --print('\27[31m'..err..'\27[39m')
     end
 
   end
@@ -700,3 +700,4 @@ our_id = 0
 now = os.time()
 math.randomseed(now)
 started = false
+
