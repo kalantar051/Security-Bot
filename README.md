@@ -26,4 +26,5 @@ sudo service redis-server start && redis-cli
 * [آموزش نصب تیجی](https://telegram.me/AboutBots/64)
 * [تیجی مخصوص روبات - سازگاری کامل](https://telegram.me/AboutBots/68)
 
-# * **Thanks to BeyondTeam**
+#
+* **Thanks to BeyondTeam**
