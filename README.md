@@ -17,5 +17,5 @@ sudo service redis-server start && redis-cli
 `````
 #دوستان گرامی حتما پس از نصب روبات تیجی مخصوص روبات را جایگذاری نمایید تا بصورت کامل از امکانات بات استفاده نمایید - میتوانید از گزینه های زیر استفاده نمایید#
 
-* ** [آموزش نصب تیجی](https://telegram.me/AboutBots/64) **
-* ** [دریافت تیجی روبات](https://telegram.me/AboutBots/68) **
+* [آموزش نصب تیجی](https://telegram.me/AboutBots/64)
+* [دریافت تیجی روبات](https://telegram.me/AboutBots/68)
