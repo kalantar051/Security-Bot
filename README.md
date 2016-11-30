@@ -27,4 +27,4 @@ sudo service redis-server start && redis-cli
 * [تیجی مخصوص روبات - سازگاری کامل](https://telegram.me/AboutBots/68)
 
 #
-* **Thanks to BeyondTeam**
+* **تشکر ویژه از بیوند تیم**
