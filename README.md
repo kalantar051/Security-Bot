@@ -14,13 +14,41 @@ cd $HOME && cd Security-Bot && ./launch.sh
 * **نصب ردیس - سرورهای رایگان**
 `````sh
 sudo service redis-server start && redis-cli
-`````
+````
+* **اجرای اپ استارت پیکا**
+`````sh
+ابتدا به پوشه
+etc
+برید و در فایل
+pika.config
+خط دهم بجای کلمه
+root
+نام یوزرتون یا روتتون رو قرار بدید
+سپس دستورات زیر را اجرا نمایید
+
+cd Security-Bot
+
+sed -i "s/root/$(whoami)/g" etc/pika.conf
+
+sed -i "s_telegrambotpath_$(pwd)_g" etc/pika.conf
+
+sudo cp etc/pika.conf /etc/init/
+
+chmod 777 pika
+
+nohup ./pika &>/dev/null &
+
+sudo start pika
+
+screen ./pika
+````
 * **نکات مهم در اجرای روبات**
 `````sh
 - حتما تیجی پایین را جایگذاری نمایید
 - از آموزش نصب تیجی در زیل متن استفاده نمایید
 - برای کارکرد کامل روبات تعویض تیجی الزامیست
 - درصورت نصب نکردن تیجی به مشکل خواهد خورد
+
 `````
 
 * [آموزش نصب تیجی](https://telegram.me/AboutBots/64)
