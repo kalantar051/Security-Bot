@@ -20,7 +20,7 @@ sudo service redis-server start && redis-cli
 ابتدا به پوشه
 etc
 برید و در فایل
-pika.config
+pika.conf
 خط دهم بجای کلمه
 root
 نام یوزرتون یا روتتون رو قرار بدید
