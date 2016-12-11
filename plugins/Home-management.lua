@@ -5046,7 +5046,7 @@ local function run(msg, matches)
 	local print_name = user_print_name(msg.from):gsub("‮", "")
 	local name_log = print_name:gsub("_", " ")
 	local data = load_data(_config.moderation.data)
-		if matches[1]:lower() == 'adding' or matches[1]:lower() == 'gadd' and not matches[2] then
+		if matches[1]:lower() == 'add' or matches[1]:lower() == 'gadd' and not matches[2] then
 			if not is_sudo(msg) and not is_support(support_id) then
 				return
 			end
@@ -5059,7 +5059,7 @@ local function run(msg, matches)
 			set_mutes(msg.to.id)
 			channel_set_admin(receiver, 'user#id'..msg.from.id, ok_cb, false)
 		end
-		if matches[1]:lower() == 'remove' or matches[1] == 'grem' and not matches[2] then
+		if matches[1]:lower() == 'rem' or matches[1] == 'grem' and not matches[2] then
 		if not is_sudo(msg) and not is_support(support_id) then
 				return
 			end
@@ -8159,8 +8159,8 @@ end
  
 return {
   patterns = {
-	"^[#/]([Aa][Dd][Dd][Ii][Nn][Gg])$",
-	"^[#/]([Rr][Ee][Mm][Oo][Vv][Ee])$",
+	"^[#/]([Aa][Dd][Dd])$",
+	"^[#/]([Rr][Ee][Mm])$",
 	"^[#/]([Gg][Aa][Dd][Dd])$",
 	"^[#/]([Gg][Rr][Ee][Mm])$",
 	"^[#/]([Mm][Oo][Vv][Ee]) (.*)$",
